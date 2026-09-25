@@ -25,4 +25,4 @@ jobs:
           PLAYABL_EMAIL: ${{ secrets.PLAYABL_EMAIL }}
           PLAYABL_PASSWORD: ${{ secrets.PLAYABL_PASSWORD }}
         run: |
-          python your_script_name.py
+         update_playabl.py
