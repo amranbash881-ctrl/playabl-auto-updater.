@@ -1,10 +1,12 @@
-name: Run Projects Automation
+name: Run Update Playabl
 
 on:
+  repository_dispatch:
+    types: [run_update_script]
   workflow_dispatch:
 
 jobs:
-  run-projects:
+  run-first:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
