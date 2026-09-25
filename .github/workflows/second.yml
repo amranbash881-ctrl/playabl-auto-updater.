@@ -1,12 +1,12 @@
-name: Run Update Playabl
+name: Update Playabl Cron Every 2 Hours
 
 on:
-  repository_dispatch:
-    types: [run_update_script]
-  workflow_dispatch:
+  schedule:
+    - cron: '0 */2 * * *'  # هذا السطر هو الذي يجعله يعمل تلقائياً كل ساعتين
+  workflow_dispatch:        # وهذا لزر التشغيل اليدوي متى ما أردت
 
 jobs:
-  run-first:
+  run-update:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
