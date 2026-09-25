@@ -1,15 +1,16 @@
-name: Update Playabl Cron Every 2 Hours
+name: Run Playabl Automation
 
 on:
-  schedule:
-    - cron: '0 */2 * * *'  # هذا السطر هو الذي يجعله يعمل تلقائياً كل ساعتين
-  workflow_dispatch:        # وهذا لزر التشغيل اليدوي متى ما أردت
+  repository_dispatch:
+    types: [run_cron_task]
+  workflow_dispatch: # يتيح لك تشغيله يدوياً من قيت هب للتجربة
 
 jobs:
-  run-update:
+  run-script:
     runs-on: ubuntu-latest
+
     steps:
-      - name: Checkout repository
+      - name: Checkout code
         uses: actions/checkout@v4
 
       - name: Set up Python
@@ -19,12 +20,14 @@ jobs:
 
       - name: Install dependencies
         run: |
+          python -m pip install --upgrade pip
           pip install playwright
           playwright install chromium
+          playwright install-deps chromium
 
-      - name: Run script
+      - name: Run automation script
         env:
           PLAYABL_EMAIL: ${{ secrets.PLAYABL_EMAIL }}
           PLAYABL_PASSWORD: ${{ secrets.PLAYABL_PASSWORD }}
         run: |
-          python update_playabl.py
+          python your_script_name.py
