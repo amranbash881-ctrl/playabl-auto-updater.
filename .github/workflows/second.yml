@@ -1,7 +1,7 @@
 name: Run Projects Automation
 
 on:
-  workflow_dispatch:  # للتشغيل اليدوي
+  workflow_dispatch:
 
 jobs:
   run-projects:
@@ -25,4 +25,4 @@ jobs:
           PLAYABL_EMAIL: ${{ secrets.PLAYABL_EMAIL }}
           PLAYABL_PASSWORD: ${{ secrets.PLAYABL_PASSWORD }}
         run: |
-  python update_playabl.py
+          python update_playabl.py
