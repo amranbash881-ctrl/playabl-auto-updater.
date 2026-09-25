@@ -3,7 +3,7 @@ name: Run Playabl Automation
 on:
   repository_dispatch:
     types: [run_cron_task]
-  workflow_dispatch: # يتيح لك تشغيله يدوياً من قيت هب للتجربة
+  workflow_dispatch: # للسماح بالتشغيل اليدوي أيضاً
 
 jobs:
   run-script:
@@ -30,4 +30,4 @@ jobs:
           PLAYABL_EMAIL: ${{ secrets.PLAYABL_EMAIL }}
           PLAYABL_PASSWORD: ${{ secrets.PLAYABL_PASSWORD }}
         run: |
-          python update_playabl.py
+          python update_playabl.py   # تأكد من وضع اسم ملف السكريبت الخاص بك هنا
