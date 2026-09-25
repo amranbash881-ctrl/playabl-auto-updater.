@@ -1,9 +1,7 @@
 name: Playabl Automation
 
 on:
-  workflow_dispatch:  # يسمح بالتشغيل اليدوي
-  schedule:
-    - cron: '0 */2 * كل ساعتين'  # (أو التوقيت الذي تفضله)
+  workflow_dispatch:
 
 jobs:
   run-script:
