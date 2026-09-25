@@ -1,38 +1,21 @@
-name: Run Four Accounts
+name: Run Four New Accounts
 
 on:
-  repository_dispatch:
-    types: [run_my_bot]
   workflow_dispatch:
+  schedule:
+    - cron: '0 * * * *'
 
 jobs:
-  run-script:
+  run-four:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
-
-      - name: Set up Python
-        uses: actions/setup-python@v5
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
         with:
           python-version: '3.10'
-
-      - name: Install dependencies
+      - name: Install Dependencies
         run: |
           pip install playwright
           playwright install chromium
-
-      - name: Run script
-        env:
-          PLAYABL_EMAIL_1: ${{ secrets.PLAYABL_EMAIL_1 }}
-          PLAYABL_PASSWORD_1: ${{ secrets.PLAYABL_PASSWORD_1 }}
-          PLAYABL_EMAIL_2: ${{ secrets.PLAYABL_EMAIL_2 }}
-          PLAYABL_PASSWORD_2: ${{ secrets.PLAYABL_PASSWORD_2 }}
-          PLAYABL_EMAIL_3: ${{ secrets.PLAYABL_EMAIL_3 }}
-          PLAYABL_PASSWORD_3: ${{ secrets.PLAYABL_PASSWORD_3 }}
-          PLAYABL_EMAIL_4: ${{ secrets.PLAYABL_EMAIL_4 }}
-          PLAYABL_PASSWORD_4: ${{ secrets.PLAYABL_PASSWORD_4 }}
-          PLAYABL_EMAIL_5: ${{ secrets.PLAYABL_EMAIL_5 }}
-          PLAYABL_PASSWORD_5: ${{ secrets.PLAYABL_PASSWORD_5 }}
-        run: |
-          python four_accounts.py
+      - name: Run Script
+        run: python four_accounts.py
