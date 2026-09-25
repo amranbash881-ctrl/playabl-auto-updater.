@@ -2,11 +2,11 @@ name: Run Four Accounts
 
 on:
   repository_dispatch:
-    types: [run_four_script]
+    types: [run_my_bot]
   workflow_dispatch:
 
 jobs:
-  run-second:
+  run-script:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
