@@ -1,10 +1,12 @@
-name: Playabl Automation
+name: Run Four Accounts
 
 on:
+  repository_dispatch:
+    types: [run_four_script]
   workflow_dispatch:
 
 jobs:
-  run-script:
+  run-second:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
@@ -20,7 +22,7 @@ jobs:
           pip install playwright
           playwright install chromium
 
-      - name: Run automation script
+      - name: Run script
         env:
           PLAYABL_EMAIL_1: ${{ secrets.PLAYABL_EMAIL_1 }}
           PLAYABL_PASSWORD_1: ${{ secrets.PLAYABL_PASSWORD_1 }}
