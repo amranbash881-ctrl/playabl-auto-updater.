@@ -1,15 +1,12 @@
-name: Run Projects Automation
+name: run Playabl Automation
 
 on:
   workflow_dispatch:
-  
-  jobs:
-   run-script:
+
+jobs:
+  run-script:
     runs-on: ubuntu-latest
     steps:
-   run-projects:
- runs-on: ubuntu-latest
- steps:
       - name: Checkout repository
         uses: actions/checkout@v4
 
@@ -23,9 +20,9 @@ on:
           pip install playwright
           playwright install chromium
 
-      - name: Run script
+      - name: Run automation script
         env:
           PLAYABL_EMAIL: ${{ secrets.PLAYABL_EMAIL }}
           PLAYABL_PASSWORD: ${{ secrets.PLAYABL_PASSWORD }}
         run: |
-          python update_playabl.py 
+          python ubdate_playabl.py
