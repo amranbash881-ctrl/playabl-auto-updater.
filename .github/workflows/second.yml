@@ -3,7 +3,6 @@ name: Run Projects Automation
 on:
   workflow_dispatch:
   schedule:
-    - cron: '0 */2 * * *'
   repository_dispatch:
     types: [run-projects]
 
