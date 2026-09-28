@@ -2,8 +2,8 @@ name: Run Projects Automation
 
 on:
   workflow_dispatch:
-  schedule:
-  repository_dispatch:
+  
+  jobs:
     types: [run-projects]
 
 jobs:
